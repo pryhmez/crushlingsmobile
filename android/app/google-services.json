@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "67709647157",
+    "firebase_url": "https://crushlings-e7f4b.firebaseio.com",
+    "project_id": "crushlings-e7f4b",
+    "storage_bucket": "crushlings-e7f4b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67709647157:android:ff20237175ba278d5bf47c",
+        "android_client_info": {
+          "package_name": "com.crushlings"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67709647157-vgcgr5i72i913pq63mo38fr2obukdkab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.crushlings",
+            "certificate_hash": "1035029033176768caa2a749d4f940dd1290db21"
+          }
+        },
+        {
+          "client_id": "67709647157-i90se3ranm0dccfomc2ohg31eour93ts.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGvkUUJJ1iyLsmHwIlzAEr0Mx5l856dSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67709647157-i90se3ranm0dccfomc2ohg31eour93ts.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
