@@ -46,7 +46,8 @@ class App extends Component {
                 return <SplashScreenNav />
               if (!this.state.isLoading){
                 if(store.getState().user.token == ''){
-                  return <AuthScreenNav />
+                  // return <AuthScreenNav />
+                  return <HomeStackScreen/>
                 }
                 return <HomeStackScreen/>
               }

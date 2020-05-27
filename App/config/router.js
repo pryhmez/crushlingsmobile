@@ -91,7 +91,7 @@ const HomeStackScreen = () => {
                 tabBarOptions={{
                     activeTintColor: '#EE5859',
                     inactiveTintColor: 'gray',
-                    showLabel: false
+                    showLabel: true
                 }}>
                 {/* <HomeStack.Screen name='Home' component={Home} /> */}
                 <HomeStack.Screen name='FindPeople' component={FindPeople} />
