@@ -1,6 +1,6 @@
 import React from 'react';
 import { Keyboard, View, Text, StyleSheet, StatusBar, SafeAreaView, TouchableOpacity, TextInput } from 'react-native';
-import FloatingLabelTextInput from './helpers.js/FloatingLabelTextInput';
+import FloatingLabelTextInput from './helpers/FloatingLabelTextInput';
 import { connect } from 'react-redux';
 import { addUser, signInUser } from '../actions/user'
 import Ionicons from 'react-native-vector-icons/Ionicons';

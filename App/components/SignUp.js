@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, StyleSheet, StatusBar, View, TouchableOpacity, ScrollView } from 'react-native';
-import PhoneVerification from './helpers.js/PhoneVerification';
-import SignUpForm from './helpers.js/SignUpForm';
+import PhoneVerification from './helpers/PhoneVerification';
+import SignUpForm from './helpers/SignUpForm';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 

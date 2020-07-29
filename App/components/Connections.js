@@ -13,7 +13,7 @@ const Connections = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#22383E',
+        backgroundColor: '#1a1a1c',
         flex: 1
     },
     text: {

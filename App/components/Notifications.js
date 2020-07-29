@@ -13,7 +13,7 @@ const Notifications = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#33e83E',
+        backgroundColor: '#1a1a1c',
         flex: 1
     },
     text: {

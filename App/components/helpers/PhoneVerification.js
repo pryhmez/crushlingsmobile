@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, StyleSheet, StatusBar, View, TouchableOpacity, ScrollView, TextInput, Keyboard } from 'react-native';
-import FloatingLabelTextInput from '../helpers.js/FloatingLabelTextInput';
+import FloatingLabelTextInput from '../helpers/FloatingLabelTextInput';
 import auth from '@react-native-firebase/auth';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
