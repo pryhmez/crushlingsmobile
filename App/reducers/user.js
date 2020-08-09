@@ -3,7 +3,7 @@
  */
 const initialState = {
     token: '',
-    userId: '',
+    userId: '5e7a5fbfe8763909af2975a3',
     email: '',
     name: ''
 };

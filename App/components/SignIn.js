@@ -44,7 +44,7 @@ class SignIn extends React.Component {
                     <View style={styles.mainContainer}>
                         <View >
                             <Text style={styles.headerTxt}>Sign in</Text>
-                        </View>
+                            </View>
                         <View style={{ marginTop: '17%' }}>
                             {/* <TextInput style={styles.inputBox}
                                 autoFocus

@@ -88,3 +88,39 @@ export const signUpUser = (firstname, lastname, gender, age, email, phone, passw
 
     }
 }
+
+export const getUserProfile = (userId) => {
+    // console.log(userId)
+    return (dispatch) => {
+        return new Promise((resolve, reject) => {
+            axios.post(apiConfig.baseUrl + 'user/getmyprofile',
+                {
+                   userId
+                })
+                .then((response) => {
+                    let res = response.data.data;
+                    dispatch(addUser(
+                        // res.token,
+                        'efwevergeagaergraheragabrebae',
+                        res.user._id,
+                        res.user.email,
+                        res.user.firstName + res.user.lastName
+                    ));
+
+
+                    // console.warn(response.data.data)
+                    if (response) {
+                        return resolve(response.data.data)
+                    }
+
+
+                })
+                .catch(err => {
+
+                    // dispatch({ type: SIGNUP_USER_FAILED, payload: true });
+                    return reject({ message: "something went wrong" + String(err) })
+                })
+        })
+
+    }
+}
