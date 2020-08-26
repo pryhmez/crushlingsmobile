@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { getUserProfile } from '../actions/user'
+import { getUserProfile, sendFriendRequest } from '../actions/user'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { SwitchNav } from './helpers/ProfileTabs';
 // const wide = wp();
@@ -17,23 +17,34 @@ class Profile extends Component {
             friends: '',
             crushes: '',
             dates: '',
-            profilePix: ''
+            profilePix: '',
+            owner: ''
         }
 
     }
 
     componentDidMount() {
-        this.props.getUserProfile(this.props.userId).then(res => {
-
+        let id = this.props.route.params ? this.props.route.params.id : this.props.userId;
+        this.props.route.params ? this.setState(() => ({owner: false})) : this.setState(() => ({owner: true}))
+        
+        this.props.getUserProfile(id, this.state.owner).then(res => {
+            
             this.setState(() => ({
                 name: res.user.firstName + " " + res.user.lastName,
                 userName: res.user.firstName,
-                friends: res.friends[0].total,
-                crushes: res.crushes[0].total
+                friends: res.friends[0] ? res.friends[0].total : '0',
+                crushes: res.crushes[0] ? res.crushes[0].total : '0'
             }))
+            console.log(this.state);
         })
 
     };
+
+    addFriend(sender, reciever) {
+        this.props.sendFriendRequest(sender, reciever).then(res => {
+            console.log(res);
+        })
+    }
 
     render() {
         return (
@@ -54,7 +65,7 @@ class Profile extends Component {
                                 </View>
                                 <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginRight: 50 }}>
 
-                                    <TouchableOpacity style={{...styles.Stats}}>
+                                    <TouchableOpacity style={{ ...styles.Stats }}>
                                         <Text style={{ color: '#fff', fontSize: 20, marginTop: 0, fontWeight: '100', alignSelf: 'center' }}>{this.state.friends}</Text>
                                         <Text style={{ color: '#363636', fontSize: 13, marginTop: 0 }}>friends</Text>
                                     </TouchableOpacity>
@@ -73,7 +84,20 @@ class Profile extends Component {
                     </View>
                 </View>
 
+
                 <View style={styles.BottomViewContainer}>
+                    {
+                        this.props.route.params
+                        &&
+                        (
+                            <View style={styles.requestBtn}>
+                                <TouchableOpacity style={styles.requestTouchable} onPress={() => {this.addFriend(this.props.userId, this.props.route.params.id)}}>
+                                    <Text style={{ color: '#fff', fontSize: 20, marginTop: 0, fontWeight: '500', alignSelf: 'center' }}>SEND REQUEST</Text>
+                                </TouchableOpacity>
+
+                            </View>
+                        )
+                    }
                     <SwitchNav />
                 </View>
             </View>
@@ -94,7 +118,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     BottomViewContainer: {
-        backgroundColor: 'blue',
+        backgroundColor: 'transparent',
         flex: hp('70%')
     },
     Stats: {
@@ -102,6 +126,19 @@ const styles = StyleSheet.create({
         // flex: 1,
         padding: 0,
         margin: 0
+    },
+    requestBtn: {
+        backgroundColor: 'transparent',
+        height: 40,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    requestTouchable: {
+        backgroundColor: 'transparent',
+        width: wp('50%'),
+        borderRadius: 3,
+        elevation: 10,
+        borderBottomColor: 'blue'
     }
 })
 
@@ -112,4 +149,4 @@ const mapStateToProps = (state) => {
     })
 }
 
-export default connect(mapStateToProps, { getUserProfile })(Profile);
+export default connect(mapStateToProps, { getUserProfile, sendFriendRequest })(Profile);

@@ -17,20 +17,20 @@ class FindPeople extends React.Component {
             arr: []
         }
     }
-
+    
     filterList(list) {
         return list.filter(
             (listItem) =>
-                listItem.artist
-                    .toLowerCase()
-                    .includes(this.state.search.toLowerCase()) ||
-                listItem.song.toLowerCase().includes(this.state.search.toLowerCase()),
-        );
-    }
-
-    queryDb(query) {
-        console.log(apiConfig.baseUrl);
-        axios.post(apiConfig.baseUrl + 'user/finduser',
+            listItem.artist
+            .toLowerCase()
+            .includes(this.state.search.toLowerCase()) ||
+            listItem.song.toLowerCase().includes(this.state.search.toLowerCase()),
+            );
+        }
+        
+        queryDb(query) {
+            // console.log(apiConfig.baseUrl);
+            axios.post(apiConfig.baseUrl + 'user/finduser',
             {
                 search: query
             })
@@ -38,12 +38,16 @@ class FindPeople extends React.Component {
                 let res = response.data;
                 // console.warn(res);
                 console.log(res.data)
-                this.setState(() => ({arr: res.data}))
+                this.setState(() => ({ arr: res.data }))
                 return res.data
-
+                
             })
-
-    }
+            
+        }
+        
+        onClickOption(id) {
+        console.log(id + 'dhfkfhvkj')
+     }
 
 
     render() {
@@ -84,16 +88,21 @@ class FindPeople extends React.Component {
                             underlineColorAndroid="transparent"
                             onChangeText={(search) => {
                                 this.queryDb(search.toLowerCase())
-                               return this.setState({ search })
-                        }}
+                                return this.setState({ search })
+                            }}
                         />
                     </View>
                     {/* {console.log(this.queryDb(this.state.search))} */}
                     {/* {this.queryDb(this.state.search)} */}
                     {this.state.arr.map((listItem, index) => (
-                    
-                    <Item key={index} name={listItem.firstName + ' ' + listItem.lastName} pic={listItem.email} id={listItem._id} />
-                ))}
+
+                        <Item
+                            key={index}
+                            name={listItem.firstName + ' ' + listItem.lastName}
+                            pic={listItem.email}
+                            id={listItem._id}
+                            clickedOption={this.onClickOption} />
+                    ))}
                 </View>
             </SafeAreaView>
         )

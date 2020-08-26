@@ -89,23 +89,27 @@ export const signUpUser = (firstname, lastname, gender, age, email, phone, passw
     }
 }
 
-export const getUserProfile = (userId) => {
+export const getUserProfile = (userId, owner) => {
     // console.log(userId)
     return (dispatch) => {
         return new Promise((resolve, reject) => {
             axios.post(apiConfig.baseUrl + 'user/getmyprofile',
                 {
-                   userId
+                    userId
                 })
                 .then((response) => {
                     let res = response.data.data;
-                    dispatch(addUser(
-                        // res.token,
-                        'efwevergeagaergraheragabrebae',
-                        res.user._id,
-                        res.user.email,
-                        res.user.firstName + res.user.lastName
-                    ));
+                    // console.log(owner);
+
+                    owner
+                        &&
+                        dispatch(addUser(
+                            // res.token,
+                            'efwevergeagaergraheragabrebae',
+                            res.user._id,
+                            res.user.email,
+                            res.user.firstName + res.user.lastName
+                        ));
 
 
                     // console.warn(response.data.data)
@@ -122,5 +126,26 @@ export const getUserProfile = (userId) => {
                 })
         })
 
+    }
+
+}
+
+export const sendFriendRequest = (sender, reciever) => {
+
+    return (dispatch) => {
+        return new Promise((resolve, reject) => {
+            console.log(sender, reciever);
+            axios.post(apiConfig.baseUrl + 'contact/addfriend',
+                {
+                    userid: sender,
+                    friendsid: reciever
+                }).then((response) => {
+                    if (response) {
+                        return resolve(response.data.data)
+                    }
+                }).catch(err => {
+                    return reject({ message: 'something went wrong' + String(err) })
+                })
+        })
     }
 }

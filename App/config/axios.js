@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const apiConfig = {
-    baseUrl: 'http://172.17.5.2:8080/api/',
+    baseUrl: 'http://172.17.2.90:8080/api/',
     // should end with a slash
     clientId: '1',
     clientSecret: 'xc34jamesDevV41XwKbWhrsGgHvR3hjwG8',

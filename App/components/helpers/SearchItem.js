@@ -1,12 +1,16 @@
 
 import React, { Component } from 'react';
-import { View, Text, TextInput, StyleSheet, Image } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useNavigation} from '@react-navigation/native';
+
 
 const Item = (props) => {
+  const navigation = useNavigation();
+
 
   return (
     <View style={styles.container}>
-      <View style={{ flex: 0.5, backgroundColor: 'transparent',}}>
+      <TouchableOpacity style={{ flex: 0.5, backgroundColor: 'transparent', }}>
         <Image
           style={styles.pic}
           source={{
@@ -14,11 +18,17 @@ const Item = (props) => {
               'https://reactnative.dev/img/tiny_logo.png'
           }}
         />
-      </View>
-      <View style={{flex: 3, backgroundColor: 'transparent', margin: 5, marginLeft: 10 }}>
+      </TouchableOpacity>
+      <TouchableOpacity 
+      style={{ flex: 3, backgroundColor: 'transparent', margin: 5, marginLeft: 10 }}
+      onPress={() => {
+        navigation.navigate('My Profile', {id: props.id});
+        props.clickedOption(props.id)
+      }}
+      >
         <Text style={styles.text}>{props.name}</Text>
         <Text style={styles.text}>{props.pic}</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 
